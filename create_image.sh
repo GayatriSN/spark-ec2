@@ -87,8 +87,12 @@ sudo apt-get install -y protobuf-compiler cmake openssl libssl-dev
 wget "http://archive.apache.org/dist/hadoop/common/hadoop-2.4.1/hadoop-2.4.1-src.tar.gz"
 tar xvzf hadoop-2.4.1-src.tar.gz
 cd hadoop-2.4.1-src
-mvn package -Pdist,native -DskipTests -Dtar
+mvn package -Pdist,native -DskipTests -Dtar || true
 sudo mv hadoop-dist/target/hadoop-2.4.1/lib/native/* /root/hadoop-native || true
+# ignoring build and using a binary instead
+wget https://archive.apache.org/dist/hadoop/core/hadoop-2.4.1/hadoop-2.4.1.tar.gz
+cp hadoop-2.4.1.tar.gz /root/hadoop-native || true
+# adding these || true to re-run scripts during testing
 
 # Install Snappy lib (for Hadoop)
 sudo apt-get install -y snappy

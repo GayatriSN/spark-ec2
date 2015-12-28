@@ -88,11 +88,11 @@ wget "http://archive.apache.org/dist/hadoop/common/hadoop-2.4.1/hadoop-2.4.1-src
 tar xvzf hadoop-2.4.1-src.tar.gz
 cd hadoop-2.4.1-src
 mvn package -Pdist,native -DskipTests -Dtar
-sudo mv hadoop-dist/target/hadoop-2.4.1/lib/native/* /root/hadoop-native
+sudo mv hadoop-dist/target/hadoop-2.4.1/lib/native/* /root/hadoop-native || true
 
 # Install Snappy lib (for Hadoop)
 sudo apt-get install -y snappy
-ln -sf /usr/lib64/libsnappy.so.1 /root/hadoop-native/.
+ln -sf /usr/lib64/libsnappy.so.1 /root/hadoop-native/. || true
 
 # Create /usr/bin/realpath which is used by R to find Java installations
 # NOTE: /usr/bin/realpath is missing in CentOS AMIs. See

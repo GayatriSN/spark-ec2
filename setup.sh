@@ -3,6 +3,8 @@
 sudo apt-get update
 
 sudo apt-get install -y pssh
+ln -s /usr/bin/pssh /usr/bin/parallel-ssh
+
 sudo apt-get install openjdk-7-jdk
 
 export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64

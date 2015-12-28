@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
 # download rstudio 
-wget http://download2.rstudio.org/rstudio-server-rhel-0.99.446-x86_64.rpm
-sudo yum install --nogpgcheck -y rstudio-server-rhel-0.99.446-x86_64.rpm
+
+sudo apt-get install gdebi-core
+wget https://download2.rstudio.org/rstudio-server-0.99.489-amd64.deb
+sudo gdebi rstudio-server-0.99.489-amd64.deb
 
 # restart rstudio 
 rstudio-server restart 

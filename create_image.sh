@@ -29,7 +29,7 @@ sudo apt-get install -y  python-matplotlib python-tornado python-scipy gfortran-
 #sudo yum install -y R
 
 # Getting R working
-deb http://cran.univ-paris1.fr/bin/linux/ubuntu trusty/
+deb http://cran.univ-paris1.fr/bin/linux/ubuntu trusty/ >> /etc/apt/sources.list
 gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
 gpg -a --export E084DAB9 | sudo apt-key add -
 sudo apt-get update

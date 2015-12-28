@@ -74,6 +74,12 @@ echo "export PATH=\$PATH:\$M2_HOME/bin" >> ~/.profile
 
 source ~/.profile
 
+#another temporary workaround... really running short on time now, so need to use these dirty hacks
+export PS1=\"\\u@\\h \\W]\\$ \"
+export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+export M2_HOME=/opt/apache-maven-3.2.3
+export PATH=\$PATH:\$M2_HOME/bin
+
 # Build Hadoop to install native libs
 sudo mkdir /root/hadoop-native
 cd /tmp

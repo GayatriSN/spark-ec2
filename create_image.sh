@@ -64,11 +64,11 @@ done
 cd /tmp
 wget "http://archive.apache.org/dist/maven/maven-3/3.2.3/binaries/apache-maven-3.2.3-bin.tar.gz"
 tar xvzf apache-maven-3.2.3-bin.tar.gz
-mv apache-maven-3.2.3 /opt/
+mv --backup=numbered apache-maven-3.2.3 /opt/
 
 # Edit bash profile
 echo "export PS1=\"\\u@\\h \\W]\\$ \"" >> ~/.profile
-echo "export JAVA_HOME=/usr/lib/jvm/java-1.7.0" >> ~/.profile
+echo "export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64" >> ~/.profile
 echo "export M2_HOME=/opt/apache-maven-3.2.3" >> ~/.profile
 echo "export PATH=\$PATH:\$M2_HOME/bin" >> ~/.profile
 

@@ -13,7 +13,8 @@ fi
 # Dev tools
 sudo apt-get install -y build-essential gcc g++ ant
 # Perf tools
-sudo apt-get install -y dstat iotop strace sysstat htop linux-tools
+sudo apt-get install -y dstat iotop strace sysstat htop 
+# sudo apt-get install linux-tools
 
 # trying to get things work without these for now
 # ned to ind a workaround here

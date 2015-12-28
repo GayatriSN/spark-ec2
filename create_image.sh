@@ -39,7 +39,7 @@ sudo apt-get -y install r-base r-base-dev
 sudo apt-get install -y pssh
 
 # Ganglia
-sudo yum install -y ganglia-monitor rrdtool gmetad ganglia-webfrontend
+sudo apt-get install -y ganglia-monitor rrdtool gmetad ganglia-webfrontend
 
 # Root ssh config
 sudo sed -i 's/PermitRootLogin.*/PermitRootLogin without-password/g' \

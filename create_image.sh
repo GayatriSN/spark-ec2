@@ -81,7 +81,7 @@ export M2_HOME=/opt/apache-maven-3.2.3
 export PATH=\$PATH:\$M2_HOME/bin
 
 # Build Hadoop to install native libs
-sudo mkdir /root/hadoop-native
+mkdir /root/hadoop-native || true
 cd /tmp
 sudo apt-get install -y protobuf-compiler cmake openssl libssl-dev
 wget "http://archive.apache.org/dist/hadoop/common/hadoop-2.4.1/hadoop-2.4.1-src.tar.gz"

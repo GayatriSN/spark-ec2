@@ -11,21 +11,34 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 # Dev tools
-sudo yum install -y java-1.7.0-openjdk-devel gcc gcc-c++ ant git
+sudo apt-get install -y java-1.7.0-openjdk-devel gcc gcc-c++ ant git
 # Perf tools
-sudo yum install -y dstat iotop strace sysstat htop perf
-sudo debuginfo-install -q -y glibc
-sudo debuginfo-install -q -y kernel
-sudo yum --enablerepo='*-debug*' install -q -y java-1.7.0-openjdk-debuginfo.x86_64
+sudo apt-get install -y dstat iotop strace sysstat htop perf
+
+# trying to get things work without these for now
+# ned to ind a workaround here
+#sudo debuginfo-install -q -y glibc
+#sudo debuginfo-install -q -y kernel
+#sudo yum --enablerepo='*-debug*' install -q -y java-1.7.0-openjdk-debuginfo.x86_64
 
 # PySpark and MLlib deps
-sudo yum install -y  python-matplotlib python-tornado scipy libgfortran
+sudo apt-get install -y  python-matplotlib python-tornado python-scipy gfortran-4.8
+
 # SparkR deps
-sudo yum install -y R
+#sudo yum install -y R
+
+# Getting R working
+deb http://cran.univ-paris1.fr/bin/linux/ubuntu trusty/
+gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
+gpg -a --export E084DAB9 | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install r-base r-base-dev
+
 # Other handy tools
-sudo yum install -y pssh
+sudo apt-get install -y pssh
+
 # Ganglia
-sudo yum install -y ganglia ganglia-web ganglia-gmond ganglia-gmetad
+sudo yum install -y ganglia-monitor rrdtool gmetad ganglia-webfrontend
 
 # Root ssh config
 sudo sed -i 's/PermitRootLogin.*/PermitRootLogin without-password/g' \
@@ -63,7 +76,7 @@ source ~/.bash_profile
 # Build Hadoop to install native libs
 sudo mkdir /root/hadoop-native
 cd /tmp
-sudo yum install -y protobuf-compiler cmake openssl-devel
+sudo apt-get install -y protobuf-compiler cmake openssl libssl-dev
 wget "http://archive.apache.org/dist/hadoop/common/hadoop-2.4.1/hadoop-2.4.1-src.tar.gz"
 tar xvzf hadoop-2.4.1-src.tar.gz
 cd hadoop-2.4.1-src
@@ -71,12 +84,14 @@ mvn package -Pdist,native -DskipTests -Dtar
 sudo mv hadoop-dist/target/hadoop-2.4.1/lib/native/* /root/hadoop-native
 
 # Install Snappy lib (for Hadoop)
-yum install -y snappy
+sudo apt-get install -y snappy
 ln -sf /usr/lib64/libsnappy.so.1 /root/hadoop-native/.
 
 # Create /usr/bin/realpath which is used by R to find Java installations
 # NOTE: /usr/bin/realpath is missing in CentOS AMIs. See
 # http://superuser.com/questions/771104/usr-bin-realpath-not-found-in-centos-6-5
+
+# not needed now atleast, we'll let it stay here
 echo '#!/bin/bash' > /usr/bin/realpath
 echo 'readlink -e "$@"' >> /usr/bin/realpath
 chmod a+x /usr/bin/realpath

@@ -1,6 +1,12 @@
 #!/bin/bash
 
+sudo apt-get update
+
 sudo apt-get install -y pssh
+sudo apt-get install openjdk-7-jdk
+
+export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64 >> ~/.profile
 
 # usage: echo_time_diff name start_time end_time
 echo_time_diff () {
@@ -40,7 +46,7 @@ SLAVES=`cat slaves`
 SSH_OPTS="-o StrictHostKeyChecking=no -o ConnectTimeout=5"
 
 if [[ "x$JAVA_HOME" == "x" ]] ; then
-    echo "Expected JAVA_HOME to be set in .bash_profile!"
+    echo "Expected JAVA_HOME to be set in .profile!"
     exit 1
 fi
 

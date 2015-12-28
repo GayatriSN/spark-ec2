@@ -5,7 +5,9 @@ sudo apt-get update
 sudo apt-get install -y pssh
 ln -s /usr/bin/pssh /usr/bin/parallel-ssh
 
-sudo apt-get install openjdk-7-jdk
+sudo apt-get -y install openjdk-7-jdk
+
+source spark-ec2/create_image.sh
 
 export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
 JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64 >> ~/.profile

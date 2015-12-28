@@ -90,7 +90,7 @@ cd hadoop-2.4.1-src
 mvn package -Pdist,native -DskipTests -Dtar || true
 sudo mv hadoop-dist/target/hadoop-2.4.1/lib/native/* /root/hadoop-native || true
 # ignoring build and using a binary instead
-wget https://archive.apache.org/dist/hadoop/core/hadoop-2.4.1/hadoop-2.4.1.tar.gz
+wget http://www.eu.apache.org/dist/spark/spark-1.5.2/spark-1.5.2-bin-hadoop2.6.tgz
 cp hadoop-2.4.1.tar.gz /root/hadoop-native || true
 # adding these || true to re-run scripts during testing
 

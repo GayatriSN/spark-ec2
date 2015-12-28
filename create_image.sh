@@ -11,7 +11,7 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 # Dev tools
-sudo apt-get install -y java-1.7.0-openjdk-devel gcc gcc-c++ ant git
+sudo apt-get install -y build-essential gcc g++ ant
 # Perf tools
 sudo apt-get install -y dstat iotop strace sysstat htop perf
 

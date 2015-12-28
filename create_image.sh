@@ -33,7 +33,7 @@ echo "deb http://cran.univ-paris1.fr/bin/linux/ubuntu trusty/" >> /etc/apt/sourc
 gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
 gpg -a --export E084DAB9 | sudo apt-key add -
 sudo apt-get update
-sudo apt-get install r-base r-base-dev
+sudo apt-get -y install r-base r-base-dev
 
 # Other handy tools
 sudo apt-get install -y pssh
